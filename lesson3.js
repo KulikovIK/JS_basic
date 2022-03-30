@@ -3,7 +3,23 @@
 let number = 0;
 
 while (number <= 100) {
-    console.log(number++);
+    if (number <= 2) {
+        console.log(number++)
+    }
+    else {
+
+        for (let i = 2; i <= number; i++) {
+
+            if (i == number) {
+                console.log(number++);
+                break;
+            }
+            else if (number % i === 0) {
+                ++number;
+                break;
+            }
+        }
+    }
 }
 
 /* 2. С этого урока начинаем работать с функционалом интернет-магазина. Предположим, есть
@@ -18,6 +34,14 @@ let basket = {pc: 500, keyboard: 100};  // a
 function countBasketPrice(data) {       // b
     let summ = 0;
     for (key in data) {
+        summ += data[key];
+    }
+    return summ;
+}
+
+function countBasketPriceNew(data) {    // b
+    let summ = 0;
+    for (let key of Object.keys(data)) {
         summ += data[key];
     }
     return summ;
